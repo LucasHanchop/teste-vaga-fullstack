@@ -14,34 +14,34 @@ datasource db {
 }
 
 model Bank {
-  id            Int      @id @default(autoincrement())
-  nr_inst       Int
-  nr_agencia    Int
-  cd_cliente    String   @db.VarChar(255)
-  nm_cliente    String   @db.VarChar(100)
-  nr_cpf_cnpj   String   @db.VarChar(50)
-  nr_contrato   Int
-  dt_contrato   DateTime
-  qt_prestacoes Int
-  vl_total      String   @db.VarChar(15)
-  cd_produto    Int
-  ds_produto    String   @db.VarChar(100)
-  cd_carteira   Int
-  ds_carteira   String   @db.VarChar(100)
-  nr_proposta   Int
-  nr_presta     Int
-  tp_presta     String   @db.VarChar(50)
-  nr_seq_pre    Int
-  dt_vct_pre    DateTime
-  vl_presta     String   @db.VarChar(15)
-  vl_mora       String   @db.VarChar(15)
-  vl_multa      String   @db.VarChar(15)
-  vl_out_acr    String   @db.VarChar(15)
-  vl_iof        String   @db.VarChar(15)
-  vl_desconto   String   @db.VarChar(15)
-  vl_atual      String   @db.VarChar(15)
-  id_situac     String   @db.VarChar(100)
-  id_sit_venc   String   @db.VarChar(100)
+  id           Int      @id @default(autoincrement())
+  nrInst       Int
+  nrAgencia    Int
+  cdClient     Int
+  nmClient     String   @db.VarChar(100)
+  nrCpfCnpj    String   @db.VarChar(50)
+  nrContrato   Int
+  dtContrato   DateTime
+  qtPrestacoes Int
+  vlTotal      String   @db.VarChar(15)
+  cdProduto    Int
+  dsProduto    String   @db.VarChar(100)
+  cdCarteira   Int
+  dsCarteira   String   @db.VarChar(100)
+  nrProposta   Int
+  nrPresta     Int
+  tpPresta     String   @db.VarChar(50)
+  nrSeqPre     Int
+  dtVctPre     DateTime
+  vlPresta     String   @db.VarChar(15)
+  vlMora       String   @db.VarChar(15)
+  vlMulta      String   @db.VarChar(15)
+  vlOutAcr     String   @db.VarChar(15)
+  vlIof        String   @db.VarChar(15)
+  vlDescon     String   @db.VarChar(15)
+  vlAtual      String   @db.VarChar(15)
+  idSituac     String   @db.VarChar(100)
+  idSitVen     String   @db.VarChar(100)
 
   @@map("dados_banco")
 }

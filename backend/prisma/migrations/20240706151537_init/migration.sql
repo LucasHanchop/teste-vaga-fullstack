@@ -1,0 +1,33 @@
+-- CreateTable
+CREATE TABLE "dados_banco" (
+    "id" SERIAL NOT NULL,
+    "nrInst" INTEGER NOT NULL,
+    "nrAgencia" INTEGER NOT NULL,
+    "cdClient" INTEGER NOT NULL,
+    "nmClient" VARCHAR(100) NOT NULL,
+    "nrCpfCnpj" VARCHAR(50) NOT NULL,
+    "nrContrato" INTEGER NOT NULL,
+    "dtContrato" TIMESTAMP(3) NOT NULL,
+    "qtPrestacoes" INTEGER NOT NULL,
+    "vlTotal" VARCHAR(15) NOT NULL,
+    "cdProduto" INTEGER NOT NULL,
+    "dsProduto" VARCHAR(100) NOT NULL,
+    "cdCarteira" INTEGER NOT NULL,
+    "dsCarteira" VARCHAR(100) NOT NULL,
+    "nrProposta" INTEGER NOT NULL,
+    "nrPresta" INTEGER NOT NULL,
+    "tpPresta" VARCHAR(50) NOT NULL,
+    "nrSeqPre" INTEGER NOT NULL,
+    "dtVctPre" TIMESTAMP(3) NOT NULL,
+    "vlPresta" VARCHAR(15) NOT NULL,
+    "vlMora" VARCHAR(15) NOT NULL,
+    "vlMulta" VARCHAR(15) NOT NULL,
+    "vlOutAcr" VARCHAR(15) NOT NULL,
+    "vlIof" VARCHAR(15) NOT NULL,
+    "vlDescon" VARCHAR(15) NOT NULL,
+    "vlAtual" VARCHAR(15) NOT NULL,
+    "idSituac" VARCHAR(100) NOT NULL,
+    "idSitVen" VARCHAR(100) NOT NULL,
+
+    CONSTRAINT "dados_banco_pkey" PRIMARY KEY ("id")
+);

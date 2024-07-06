@@ -60,7 +60,7 @@ readableStream.on("data", (data: Buffer) => {
 readableStream.on("end", () => {
     csvConvertido = csvData.map((el) => {
         return Object.entries(el).map((entry: [string, any]) => {
-            const k = entry[0] 
+            const k = entry[0]
             if (k.startsWith("vl")) {
                 return {key: k, val: numberFormat.format(entry[1])}
             }
@@ -71,10 +71,9 @@ readableStream.on("end", () => {
                 const data = new Date(parseInt(ano), parseInt(mes) - 1, parseInt(dia))
                 return {key: k, val: data}
             }
-            return {key: k, val: entry[1]}
+            return { key: k, value: entry[0] }
         })
     })
-    console.log(csvConvertido)
 })
 
 

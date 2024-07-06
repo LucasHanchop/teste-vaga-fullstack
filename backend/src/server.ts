@@ -7,7 +7,7 @@ const server = app.listen(port, () => {
     console.log("App listening on port ", port)
 })
 
-
+console.log(csvConvertido)
 
 process.on("SIGINT", () => {
     server.close()

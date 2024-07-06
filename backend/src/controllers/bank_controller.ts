@@ -120,7 +120,6 @@ export default  {
                     message: "Bank Info not found!"
                 })  
             }
-            console.log(data)
             const bank = await prisma.bank.update({
                 where: {
                     id: parseInt(req.body.id)
@@ -140,7 +139,27 @@ export default  {
                 message: err
             })
         }
+    },
+
+    async findBankPagination(req: Request, res: Response): Promise<{} | undefined> {
+        try {
+            const  {take, skip } : { take: number, skip?: number} = req.body
+
+            const banks = await prisma.bank.findMany({
+                
+                take: take,
+                skip: skip
+            })
+            return res.json({
+                error: false,
+                banks: banks
+            })
+
+        } catch (err) {
+            return res.json({
+                error: true,
+                message: err
+            })
+        }
     }
-
-
 }
