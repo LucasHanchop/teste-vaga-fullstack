@@ -1,5 +1,8 @@
 import { Bank } from "@/types/bank"
+import { cpf, cnpj } from "cpf-cnpj-validator"
 import { GridColDef } from "@mui/x-data-grid"
+
+
 const numberFormat = new Intl.NumberFormat("pt-Br", {
   style: "currency",
   currency: "BRL",
@@ -37,6 +40,30 @@ const columns: Array<GridColDef<Bank>> = [
     width: 120
   },
   {
+    field: "isValidCpfCnp",
+    headerName: "CPF/CNPJ é Valido?",
+    width: 100,
+    valueGetter: (value: string, row: Bank) => {
+      return row.nrCpfCnpj
+    },
+    valueFormatter: (value: string) => {
+      if (value.length === 11) {
+        const valid = cpf.isValid(value)
+        if (!valid) {
+          return "Este CPF é invalido! " + cpf.format(value)
+        }
+        return "Este CPF é valido! " + cpf.format(value)
+      }
+      if (value.length === 14) {
+        const valid = cnpj.isValid(value)
+        if (!valid) {
+          return "Este CNPJ é invalido! " + cnpj.format(value) 
+        }
+        return "Este CNPJ é valido! " + cnpj.format(value) 
+      }
+    }
+  },
+  {
     field: "nrContrato",
     headerName: "Número Contrato",
     width: 150
@@ -50,7 +77,7 @@ const columns: Array<GridColDef<Bank>> = [
       if (value == null) {
         return ""
       }
-      return `${value.getDate()}/0${value.getMonth() + 1}/${value.getFullYear()}`
+      return `${value.getDate()}/${value.getMonth() + 1}/${value.getFullYear()}`
     }
   },
   {
@@ -119,7 +146,7 @@ const columns: Array<GridColDef<Bank>> = [
       if (value == null) {
         return ""
       }
-      return `${value.getDate()}/0${value.getMonth() + 1}/${value.getFullYear()}`
+      return `${value.getDate()}/${value.getMonth() + 1}/${value.getFullYear()}`
     }
   },
   {
@@ -215,6 +242,19 @@ const columns: Array<GridColDef<Bank>> = [
     field: "idSitVen",
     headerName: "Situacao Vencimento",
     width: 180
+  },
+  {
+    field: "validaValTotalePrest",
+    headerName: "Validação Valor Total e Prestação",
+    width: 230,
+    valueGetter: (value: string, row: Bank) => {
+      if (row.vlTotal == null || row.qtPrestacoes == null) {
+        return ""
+      }
+     const val = parseInt(row.vlTotal) / row.qtPrestacoes
+     return val.toFixed(0)
+    } 
+
   }
 ]
   
